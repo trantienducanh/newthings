@@ -92,10 +92,11 @@
         const p2 = mCanvas.width / 8;
         const font4 = "30px Arial";
         const font8 = "17px Arial";
+        
         var nums = 4;
         var sqr = p1;
-        var valueArr = ["0", "2", "4", "8", "16", "32", "64", "128", "256", "512", "1024", "2048"]
 
+        var valueArr = ["0", "2", "4", "8", "16", "32", "64", "128", "256", "512", "1024", "2048"]
         var colorArr = ["yellow", "purple", "cyan","orange","blue","pink","green","brown","lightblue","red","gray","darkblue"];
         var gameBoard = [];
         
@@ -150,7 +151,6 @@
 
         }
         
-       
         function drawSquareRect(x, y, value){
             var text = valueArr[value];
             context.fillStyle = colorArr[value];
@@ -163,6 +163,7 @@
             context.fillText(text, x * (sqr + 1) + sqr/ 2 - text.length , y*(sqr + 1)+ sqr / 2); 
 
         }
+
         function drawGame(_nums)
         {
             split(_nums);
@@ -183,6 +184,12 @@
             
         }
 
+        function EventProcessing()
+        {
+        
+           // if (UpEvent(event))
+        }
+        function EndGame() { return true };
     </script>
 </body>
 </html>

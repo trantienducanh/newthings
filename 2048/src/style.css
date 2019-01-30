@@ -1,0 +1,64 @@
+
+ .fly-in-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color : whitesmoke;
+            align-self: center;
+            
+            position : relative;
+            display : inline-block;
+            
+            font-size: 43;
+            text-transform: uppercase;
+            
+            margin-left : 35%;
+            top : center;
+        }
+        
+        body {
+
+            background-image: url(https://cdn.wallpapersafari.com/35/33/3nZ4DS.jpg);
+            background-repeat: no-repeat;
+            width : 100%;
+            height: 95%;
+            margin-left : 0;
+            padding : 0;
+            overflow: hidden;
+        }
+        
+        .choices {
+            width : 350px;
+            height: 50px;
+            margin-top : 5px;
+            margin-bottom: 10px;
+            padding : 0;
+            margin-left : 40%;
+            top : center;
+            position: relative;
+        }
+        .gameplay {
+            position : relative;
+            top : center;
+            margin-top:  15px;
+            left : 30%;
+        }
+        canvas {
+            background-color: lightpink;
+            padding: 0;
+            margin : 0 auto;
+            border : salmon solid 8px;
+        }
+        .size4, .size8 {
+            padding : 10px;
+            margin : 2px 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 32;
+            font-weight: bold;
+            color : orange;
+            text-align: center;
+            border: double darkcyan;
+            border-radius: 20px;
+            background-color: white;
+        }
+        
+        .size4:hover, .size8:hover { background-color: purple; border-color: seagreen;};

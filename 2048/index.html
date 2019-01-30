@@ -1,0 +1,27 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css"  href="./src/style.css">
+</head>
+<body>
+    <h1 class="fly-in-text"> THE 2048 GAME </h1>
+    <div class="main">
+    <div class="choices">
+        <span id="4x4" class="size4" onclick="playGame(4)">4x4</span>
+        <span id="8x8" class="size8" onclick="playGame(8)">8x8</span>
+    </div>
+    <div class="gameplay">
+            <canvas id="mycanvas" class="game-area" width="443px" height="443px"></canvas>
+    </div>
+    </div>
+    <script type="text/javascript" src="./src/main.js">
+    </script>
+</body>
+</html>

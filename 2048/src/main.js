@@ -8,7 +8,7 @@ const font8 = "17px Arial";
 
 var nums = 4;
 var sqr = p1;
-var change = false;
+var change = false, endGame = true;
 
 var valueArr = ["0", "2", "4", "8", "16", "32", "64", "128", "256", "512", "1024", "2048"];
 var colorArr = ["","yellow", "purple", "cyan","black","blue","red","green","brown","gray","pink","gold"];
@@ -35,26 +35,26 @@ function mergeGameBoardValue(y1, x1, y2, x2)
 }
 function createNewSquare()
 {
-    var posInArr = parseInt(Math.random() * 10000 % (nums*nums-1));
-    var _value =  parseInt(Math.random() + 0.35 + 1);
-
-    if (gameBoard[posInArr] != 0)
+    //alert("vo");
+    var posInArr = parseInt(Math.random() * 1500 % (nums*nums-1));
+    var _value =  parseInt(Math.random() + 1);
+    var oldPos = posInArr;
+    while (gameBoard[posInArr] != 0)
     {
-        alert("step1 : " + possInArr +" " + gameBoard[posInArr]);
-        posInArr++;
-        while(gameBoard[posInArr] != 0)
-        {
-            posInArr = parseInt(Math.random() * 10000 % (nums*nums-1));
-            _value =  parseInt(Math.random() + 0.2 + 1);
+        if (posInArr >= nums*nums - 1) posInArr = 0;
+        else posInArr++;
+        if(posInArr == oldPos) {
+           break;
         }
     }
 
-    gameBoard[posInArr] = _value;
+    if (gameBoard[posInArr] == 0 ) gameBoard[posInArr] = _value;
 }
 function initGameBoard(_nums)
 {
     // emty the gameBoard
     var numOfSquares = _nums *_nums - gameBoard.length; 
+    //alert(nums*nums);
     for ( var i = 0; i < gameBoard.length; i++) gameBoard[i] = 0;
     for ( var i = 0; i < numOfSquares ; i++) gameBoard.push(0);
     
@@ -105,11 +105,10 @@ function drawSquareRect(_x, _y, _value){
     if (nums == 4) context.font = font4;
     else context.font = font8;
     context.fillText(text, _x * sqr + sqr/ 2 - text.length , _y * sqr + sqr / 2 + 3); 
-
 }
-function drawFirstSquares()
+function drawFirstSquares(_nums)
 {
-    for ( var i = 0; i < 10; i++){
+    for ( var i = 0; i < _nums; i++){
         var _x = parseInt(Math.random() * 101 % nums);
         var _y = parseInt(Math.random() * 101 % nums);
         var _value = parseInt(Math.random() + 0.55 + 1);
@@ -136,7 +135,7 @@ function EventProcessing()
     // if (UpEvent(event))
     document.onkeydown = function (e)
     {
-        //e = window.event;
+        e = window.event;
         change = false;
         switch(e.keyCode)
         {
@@ -144,18 +143,24 @@ function EventProcessing()
             case 38 : up_gathering(); break;
             case 39 : right_gathering(); break;
             case 40 : down_gathering(); break;
+            default : break;
         }    
-        if (change == true) createNewSquare();
-        context.clearRect(0, 0, mCanvas.width, mCanvas.height);
-        drawAllSquares();
-        drawFrames(nums);
-        
-        //if (EndGame() == true) //alert("Full of Numbers");
+        //alert(change);
+        if (change == true) 
+        {
+            createNewSquare();
+            
+            context.clearRect(0, 0, mCanvas.width, mCanvas.height);
+            drawAllSquares();
+            drawFrames(nums);
+        }
     }
     
 }
 
+
 function up_gathering(){
+    //change = false;
     for ( var i = 0; i < nums; i++)
     {
         var target = 0, index = 1;
@@ -197,11 +202,11 @@ function up_gathering(){
                      index++;
                 }
             }
-            //alert(1);
         }
     }
 }
 function down_gathering(){
+    //change = false;
     for ( var i = nums-1; i >= 0; i--)
     {
         var target = nums-1, index = nums-2;
@@ -242,11 +247,11 @@ function down_gathering(){
                      change = true;
                 }
             }
-            //alert(2);
         }
     }
 }
 function right_gathering(){
+    //change = false;
     for ( var i = nums-1; i >= 0; i--)
     {
         var target = nums-1, index = nums-2;
@@ -289,11 +294,11 @@ function right_gathering(){
                      index--;
                 }
             }
-            //alert(3);
         }
     }
 }
 function left_gathering(){
+    //change = false;
     for ( var i = 0; i < nums ; i++)
     {
         var target = 0, index = 1;
@@ -337,15 +342,14 @@ function left_gathering(){
                      index++;
                 }
             }
-            //alert(4);
         }
     }
 }
+
 function playGame(_nums)
 {
     initGameBoard(_nums);
-    drawFirstSquares();
+    drawFirstSquares(2);
     drawFrames(_nums);
     EventProcessing();
 }
-
